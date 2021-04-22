@@ -28,8 +28,8 @@ namespace EmployeeServices.Controllers
             return employeeProvider.GetEmployee(employeeId);
         }
 
-        [HttpPost]
-        //[Route("api/Employee/AddEmployee")]
+        [HttpPut]
+        [Route("AddEmployee")]
         public IActionResult AddEmployee(Employee.DataAccessLayer.Employee employee)
         {
             employeeProvider.AddEmployee(employee);
@@ -37,7 +37,7 @@ namespace EmployeeServices.Controllers
         }
 
         [HttpPost]
-        //[Route("api/Employee/UpdateEmployee")]
+        [Route("UpdateEmployee")]
         public IActionResult UpdateEmployee(Employee.DataAccessLayer.Employee employee)
         {
             employeeProvider.UpdateEmployee(employee);
@@ -45,7 +45,7 @@ namespace EmployeeServices.Controllers
         }
 
         [HttpDelete]
-        //[Route("api/Employee/DeleteEmployee")]
+        [Route("DeleteEmployee")]
         public IActionResult DeleteEmployee(string empID)
         {
             employeeProvider.DeleteEmployee(empID);

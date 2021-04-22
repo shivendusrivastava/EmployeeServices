@@ -38,7 +38,7 @@ namespace Employee.DataAccessLayer.Repositories
 
         public void UpdateEmployee(Employee updatedEmployee)
         {
-            var entity = _context.Employees.Attach(updatedEmployee);
+            var entity = _context.Employees.Update(updatedEmployee);
             entity.State = EntityState.Modified;
             Save();
         }
