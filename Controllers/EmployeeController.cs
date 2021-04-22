@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace EmployeeServices.Controllers
 {
-    [Route("api/controller")]
+    [Route("api/employee")]
     [ApiController]
     public class EmployeeController : ControllerBase
     {
@@ -29,7 +29,7 @@ namespace EmployeeServices.Controllers
         }
 
         [HttpPost]
-        [Route("api/Employee/AddEmployee")]
+        //[Route("api/Employee/AddEmployee")]
         public IActionResult AddEmployee(Employee.DataAccessLayer.Employee employee)
         {
             employeeProvider.AddEmployee(employee);
@@ -37,7 +37,7 @@ namespace EmployeeServices.Controllers
         }
 
         [HttpPost]
-        [Route("api/Employee/UpdateEmployee")]
+        //[Route("api/Employee/UpdateEmployee")]
         public IActionResult UpdateEmployee(Employee.DataAccessLayer.Employee employee)
         {
             employeeProvider.UpdateEmployee(employee);
@@ -45,7 +45,7 @@ namespace EmployeeServices.Controllers
         }
 
         [HttpDelete]
-        [Route("api/Employee/DeleteEmployee")]
+        //[Route("api/Employee/DeleteEmployee")]
         public IActionResult DeleteEmployee(string empID)
         {
             employeeProvider.DeleteEmployee(empID);

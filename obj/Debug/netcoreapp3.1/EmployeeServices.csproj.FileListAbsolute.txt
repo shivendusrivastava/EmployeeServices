@@ -60,3 +60,4 @@ D:\Study\VS-19_Projects\EmployeeServices\obj\Debug\netcoreapp3.1\EmployeeService
 D:\Study\VS-19_Projects\EmployeeServices\obj\Debug\netcoreapp3.1\EmployeeServices.dll
 D:\Study\VS-19_Projects\EmployeeServices\obj\Debug\netcoreapp3.1\EmployeeServices.pdb
 D:\Study\VS-19_Projects\EmployeeServices\obj\Debug\netcoreapp3.1\EmployeeServices.genruntimeconfig.cache
+D:\Study\VS-19_Projects\EmployeeServices\obj\Debug\netcoreapp3.1\EmployeeServices.csprojAssemblyReference.cache
