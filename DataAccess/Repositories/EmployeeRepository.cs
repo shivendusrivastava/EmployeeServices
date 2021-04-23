@@ -38,7 +38,10 @@ namespace Employee.DataAccessLayer.Repositories
 
         public void UpdateEmployee(Employee updatedEmployee)
         {
-            var entity = _context.Employees.Update(updatedEmployee);
+            var user = _context.Employees.FirstOrDefault(r => r.Empcode == updatedEmployee.Empcode);
+            user = updatedEmployee;
+            //var entity = _context.Employees.Attach(user);
+            var entity = _context.Employees.Update(user);
             entity.State = EntityState.Modified;
             Save();
         }
@@ -71,7 +74,5 @@ namespace Employee.DataAccessLayer.Repositories
                 // dispose resources when needed
             }
         }
-
-
     }
 }

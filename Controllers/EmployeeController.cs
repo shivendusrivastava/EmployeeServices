@@ -19,6 +19,7 @@ namespace EmployeeServices.Controllers
         [HttpGet()]
         public ActionResult<IEnumerable<Employee.DataAccessLayer.Employee>> GetEmployees()
         {
+            var x = employeeProvider.GetEmployees().ToList();
             return employeeProvider.GetEmployees().ToList();
         }
 
@@ -28,7 +29,7 @@ namespace EmployeeServices.Controllers
             return employeeProvider.GetEmployee(employeeId);
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("AddEmployee")]
         public IActionResult AddEmployee(Employee.DataAccessLayer.Employee employee)
         {
@@ -36,7 +37,7 @@ namespace EmployeeServices.Controllers
             return Ok();
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("UpdateEmployee")]
         public IActionResult UpdateEmployee(Employee.DataAccessLayer.Employee employee)
         {

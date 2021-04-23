@@ -30,7 +30,15 @@ namespace EmployeeServices
             });
 
             services.AddScoped<IEmployeeProvider, EmployeeProvider>();
-            services.AddScoped<IEmployeeRepository, EmployeeRepository>();            
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+                    //.AllowCredentials());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +54,8 @@ namespace EmployeeServices
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors("CorsPolicy");
 
             app.UseEndpoints(endpoints =>
             {
