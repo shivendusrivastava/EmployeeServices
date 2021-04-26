@@ -19,7 +19,6 @@ namespace EmployeeServices.Controllers
         [HttpGet()]
         public ActionResult<IEnumerable<Employee.DataAccessLayer.Employee>> GetEmployees()
         {
-            var x = employeeProvider.GetEmployees().ToList();
             return employeeProvider.GetEmployees().ToList();
         }
 
