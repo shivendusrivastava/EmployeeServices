@@ -23,10 +23,22 @@ namespace EmployeeServices
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddDbContext<EmployeeContext>(options =>
+            //{
+            //    var server = "rds connection endpoint";
+            //    var port = "1433";
+            //    var database = "EMSDb";
+            //    var user = "";
+            //    var password = "";
+
+            //    options.UseSqlServer(
+            //        $"Server={server},{port};Initial Catalog={database};User ID={user};Password={password}",
+            //        sqlServer => sqlServer.MigrationsAssembly("EmployeeServices"));
+            //});
             services.AddControllers();
             services.AddDbContextPool<EmployeeContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("EMSDb"));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
 
             services.AddScoped<IEmployeeProvider, EmployeeProvider>();
@@ -37,7 +49,6 @@ namespace EmployeeServices
                     builder => builder.AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader());
-                    //.AllowCredentials());
             });
         }
 

@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmployeeServices.Migrations
 {
     [DbContext(typeof(EmployeeContext))]
-    [Migration("20210422105105_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20210526103727_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -51,7 +51,7 @@ namespace EmployeeServices.Migrations
                     b.HasData(
                         new
                         {
-                            EmployeeID = "52f1e8f9-70cb-40d2-8712-ce1c440c9fa8",
+                            EmployeeID = "0e446ba0-476c-4c16-918f-4dd35829a861",
                             Designation = "Consultant",
                             Doj = "02-Feb-2021",
                             Empcode = "1121055",
@@ -61,7 +61,7 @@ namespace EmployeeServices.Migrations
                         },
                         new
                         {
-                            EmployeeID = "ae717a5b-cda2-410a-9484-a9b7460609c0",
+                            EmployeeID = "b672dd42-b73f-4886-b499-fc7bff6f44d4",
                             Designation = "Sr. Business Analyst",
                             Doj = "08-Jun-2020",
                             Empcode = "1135109",
@@ -71,7 +71,7 @@ namespace EmployeeServices.Migrations
                         },
                         new
                         {
-                            EmployeeID = "ac4ace0d-8d2e-4734-ba7f-93880c24d067",
+                            EmployeeID = "bbd718d8-b9b3-4f6c-adca-09b13327d920",
                             Designation = "Sr. Security Specialist",
                             Doj = "14-Apr-2019",
                             Empcode = "1156820",
@@ -81,7 +81,7 @@ namespace EmployeeServices.Migrations
                         },
                         new
                         {
-                            EmployeeID = "dec7e46e-8c09-4c01-a7a3-694ed60a91ad",
+                            EmployeeID = "55b7e9d5-eaaa-4386-a5c4-259de5fd89b5",
                             Designation = "Sr. Finance Advisor",
                             Doj = "11-May-2015",
                             Empcode = "1135820",
