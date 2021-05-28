@@ -7,7 +7,10 @@ trigger:
 - main
 
 pool:
-  vmImage: 'windows-latest'
+  name: Default
+  demands:
+  - msbuild
+  - visualstudio
 
 variables:
   solution: '**/*.sln'
@@ -15,20 +18,33 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- task: NuGetToolInstaller@1
+- task: NuGetToolInstaller@0
+  displayName: 'Use NuGet 5.8.1'
+  inputs:
+    versionSpec: 5.8.1
 
 - task: NuGetCommand@2
+  displayName: 'NuGet restore'
   inputs:
-    restoreSolution: '$(solution)'
+    restoreSolution: '$(Parameters.solution)'
 
 - task: VSBuild@1
+  displayName: 'Build solution'
   inputs:
-    solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    solution: '$(Parameters.solution)'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactstagingdirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
+    platform: '$(BuildPlatform)'
+    configuration: '$(BuildConfiguration)'
 
-- task: VSTest@2
+- task: PublishSymbols@1
+  displayName: 'Publish symbols path'
   inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    SearchPattern: '**\bin\**\*.pdb'
+    SymbolsFolder: '$(Build.SourcesDirectory)'
+  continueOnError: true
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
+    ArtifactName: '$(Parameters.ArtifactName)'
